@@ -1,0 +1,28 @@
+Cert-Manager requests a certificate: Cert-Manager creates a certificate 
+request to Let's Encrypt based on the Certificate resource.
+
+Let's Encrypt initiates domain validation: Let's Encrypt performs the HTTP-01
+ or DNS-01 challenge to validate your control over the domain.
+
+HTTP-01 Challenge: Let's Encrypt will attempt to access a 
+specific URL (e.g., http://sub.example.com/.well-known/acme-challenge/<token>). 
+
+Cert-Manager configures your Ingress to serve the challenge response at this URL.
+
+DNS-01 Challenge: Let's Encrypt checks for a specific DNS TXT record. Cert-Manager can automate this if 
+configured correctly with DNS providers (e.g., using DNS01 solvers).
+
+Domain ownership confirmed: Once Let's Encrypt confirms you control the domain, it issues the certificate.
+
+Cert-Manager stores the certificate: Cert-Manager stores the issued certificate in the Kubernetes Secret 
+specified in the Certificate resource (e.g., example-com-tls).
+Ingress uses the certificate: The Ingress resource uses the stored certificate to terminate TLS connections.
+
+Conclusion
+Domain Verification: Let's Encrypt verifies domain ownership via HTTP-01 or DNS-01 challenges.
+Cert-Manager Automation: Cert-Manager automates the process of obtaining, renewing, and managing TLS certificates 
+in Kubernetes.
+Steps: Install Cert-Manager, create an Issuer/ClusterIssuer, define a Certificate resource, 
+and update your Ingress resource to use the certificate.
+By following these steps, you can set up secure HTTPS for your Kubernetes services with automatic 
+certificate management provided by Cert-Manager and Let's Encrypt.

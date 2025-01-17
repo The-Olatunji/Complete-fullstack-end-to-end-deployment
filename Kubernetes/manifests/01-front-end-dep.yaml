@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: climate-monitor-app
+  namespace: climate
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: climate-monitor-app
+  template:
+    metadata:
+      labels:
+        app: climate-monitor-app
+    spec:
+      containers:
+        - name: climate-monitor-container
+          image: tophe1/climate-monitor-app:1.0
+          ports:
+            - containerPort: 8080

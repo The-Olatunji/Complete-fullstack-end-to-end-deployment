@@ -1,0 +1,41 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: climate-ingress
+  namespace: climate
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+  #  nginx.ingress.kubernetes.io/ssl-redirect: "false"
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+  #  acme.cert-manager.io/http01-ingress-class: nginx
+  #  kubernetes.io/ingress.class: nginx
+
+spec:
+  ingressClassName: nginx
+  rules:
+    - host: tophe.me
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: climate-monitor-app-service
+                port:
+                  number: 80
+    - host: www.tophe.me
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: climate-monitor-app-service
+                port:
+                  number: 80
+  #Enable SSL if you have a certificate
+  tls:
+  - hosts:
+      - tophe.me
+      - www.tophe.me      
+    secretName: climate-tls
