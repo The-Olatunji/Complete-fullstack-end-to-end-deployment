@@ -156,9 +156,6 @@ This repository also contains a CI/CD pipeline powered by GitHub Actions. The pi
 
 The CI/CD pipeline is defined in the deploy.yml file under the .github/workflows directory. The workflow includes the following steps:
 
-1. Install Kubectl
-  ![kubectl job](<./images/Screenshot 2024-08-21 023114.png>)
-
 1. Set Up AWS Credentials: Configures AWS credentials using GitHub Secrets.
 
 1. Install Terraform: Installs the specified version of Terraform.
@@ -189,10 +186,6 @@ Go to Settings > Secrets > New repository secret.
 Add the following secrets:
 AWS_ACCESS_KEY_ID
 AWS_SECRET_ACCESS_KEY
-
-### Kubernetes Configuration
-The KUBE_CONFIG_DATA secret is required for configuring kubectl in the pipeline. Follow these steps to generate and store the Kubeconfig:
-
 
 ### Running the Pipeline
 Once the pipeline is configured, it will automatically trigger on pushes to the master branch. 
