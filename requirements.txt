@@ -3,3 +3,4 @@ Werkzeug==2.0.1
 geopy
 meteostat
 requests
+python-dotenv==1.0.0

@@ -5,7 +5,7 @@ metadata:
   name: climate-monitor-app-service
   namespace: climate
 spec:
-  type: LoadBalancer
+  type: ClusterIP
   selector:
     app: climate-monitor-app
   ports:

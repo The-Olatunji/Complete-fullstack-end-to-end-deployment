@@ -17,8 +17,10 @@ import http.client
 from logging import Logger
 from datetime import datetime
 from werkzeug.exceptions import abort
+from dotenv import load_dotenv
 
 from geopy.geocoders import Nominatim #importing a py geolocation library
+load_dotenv()
 
 geofinder = Nominatim(user_agent="app") # initializing the library
 current_city = ""
@@ -28,7 +30,7 @@ latitude =""
 
 app = Flask(__name__) 
 
-app.secret_key = "63f00a520020e1d19db9bdcf16c922a1"
+app.secret_key = "API_KEY"
 
 @app.route('/')
 def home():
@@ -88,7 +90,7 @@ def result():
 		print(lat)
 		
 			
-		response = requests.get("https://api.openweathermap.org/data/2.5/air_pollution?lat="+ lat + "&lon=" + lon + "&appid=63f00a520020e1d19db9bdcf16c922a1")
+		response = requests.get("https://api.openweathermap.org/data/2.5/air_pollution?lat="+ lat + "&lon=" + lon + "&appid=API_KEY")
 		pollution_index = json.loads(response.text)
 		
 		print(pollution_index)
