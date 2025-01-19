@@ -9,9 +9,13 @@ The project goal is to package the application as a docker and deploy the app on
 
 This project uses Terraform to set up an Amazon EKS (Elastic Kubernetes Service) cluster with a VPC, managed node groups, and IRSA (IAM Roles for Service Accounts) for the Amazon EBS CSI (Container Storage Interface) driver.
 
-## Proposed Deployment Architecture
+### Proposed Deployment Architecture
 
 ![Deployment Architecture](<./images/real 3 tier architeture pic.png>)
+### Dockerfile
+This app was dockerize using python-slim as based image to reduce container size
+Here's link to the public docker image at Dockerhub[Dockerhub image](https://hub.docker.com/r/tophe1/climate-monitor-app)
+![Docker image](<Screenshot 2025-01-19 021827.png>)
 
 ### Why deploy with Terraform?
 While you could use the built-in AWS provisioning processes (UI, CLI, CloudFormation) for EKS clusters, Terraform provides you with several benefits:
