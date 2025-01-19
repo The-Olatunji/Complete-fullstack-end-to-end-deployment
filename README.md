@@ -200,6 +200,8 @@ Starting a New Workflow:
 
 The first step is to initialize Terraform using terraform init.
 During initialization, Terraform connects to the S3 backend and downloads the existing state file. This gives Terraform a full understanding of what resources have been created, even if they were created in a different workflow.
+![Github job](<Screenshot 2025-01-19 020100.png>)
+---
 #### Running terraform destroy:
 
 Now, when terraform destroy is ran, Terraform compares the state file (downloaded from S3) with the current state of your infrastructure and identifies which resources it needs to destroy.
