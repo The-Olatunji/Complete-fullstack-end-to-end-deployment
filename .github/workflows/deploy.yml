@@ -72,9 +72,12 @@ jobs:
 
       - name: kubectl with AWS credentials
         run: kubectl get nodes
+       
+      - name: Deploy Application service to Kubernetes
+        run: kubectl apply -f kubernetes/manifests/00-climate-ns.yaml
 
       - name: Deploy Application service to Kubernetes
-        run: kubectl apply -f kubernetes/manifests/*
+        run: kubectl apply -f kubernetes/manifests/*.yaml
 
       - name: Deploy NGINX Ingress Controller to Kubernetes
         run: kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/main/deploy/static/provider/aws/deploy.yaml  
@@ -83,4 +86,4 @@ jobs:
         run:  kubectl apply --validate=false -f https://github.com/jetstack/cert-manager/releases/download/v1.10.0/cert-manager.yaml 
      
       - name: Deploy Ingress to Kubernetes
-        run: kubectl apply -f kubernetes/ingress/*
+        run: kubectl apply -f kubernetes/ingress/*.yaml
